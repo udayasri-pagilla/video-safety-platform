@@ -143,3 +143,12 @@ Cloud storage (AWS S3)
 Signed URLs for secure streaming
 
 Video compression & multiple resolution
+
+## 📚 Documentation
+
+Detailed documentation is available in the `docs/` folder:
+
+- Architecture overview
+- API documentation
+- User guide
+- Design assumptions
