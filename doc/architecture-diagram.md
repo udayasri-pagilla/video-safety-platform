@@ -1,3 +1,4 @@
+```mermaid
 flowchart LR
     User[User Browser<br/>React + Vite]
 
@@ -15,8 +16,8 @@ flowchart LR
     end
 
     subgraph Storage
-        DB[(MongoDB<br/>Metadata)]
-        Files[(Video Files<br/>Local Storage)]
+        DB[(MongoDB Metadata)]
+        Files[(Video Files Local Storage)]
     end
 
     User --> UI
@@ -31,8 +32,9 @@ flowchart LR
     Processor --> SocketServer
     SocketServer --> SocketClient
 
-    Streamer --> Files
     UI --> Streamer
+    Streamer --> Files
+
 
 ### Architecture Explanation
 
