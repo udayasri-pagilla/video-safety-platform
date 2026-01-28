@@ -1,0 +1,38 @@
+
+---
+
+# 🧹 2️⃣ .gitignore (VERY IMPORTANT)
+
+Create a file named **`.gitignore`** in the **root folder**.
+
+### ✅ COPY–PASTE THIS
+
+```gitignore
+# Node modules
+node_modules/
+
+# Environment files
+.env
+
+# Uploads (videos)
+backend/uploads/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build folders
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vite cache
+.vite/
+
+# Editor folders
+.vscode/
+.idea/
