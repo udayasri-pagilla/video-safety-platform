@@ -26,8 +26,9 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="dashboard">
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+  <div style={{ maxWidth: "1000px", margin: "40px auto" }}>
+    <div className="card">
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h1>Video Dashboard</h1>
         <button onClick={logout}>Logout</button>
       </div>
@@ -35,7 +36,9 @@ export default function Dashboard() {
       <UploadVideo />
       <VideoList />
     </div>
-  );
+  </div>
+);
+
 }
 
 

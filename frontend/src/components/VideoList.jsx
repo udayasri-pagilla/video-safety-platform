@@ -62,15 +62,21 @@ export default function VideoList() {
   return (
     <div>
       <h3>Uploaded Videos</h3>
-      {videos.map(v => (
-  <div key={v._id} className="video-card">
-    <p>{v.filename}</p>
-    <p>Status: {v.status} | Progress: {v.progress}%</p>
+     {videos.map(v => (
+  <div key={v._id} style={{ marginTop: "20px", paddingTop: "20px", borderTop: "1px solid #e5e7eb" }}>
+    <strong>{v.filename}</strong>
+    <p style={{ fontSize: "14px", color: "#6b7280" }}>
+      Status: {v.status} | Progress: {v.progress}%
+    </p>
+
     {(v.status === "safe" || v.status === "flagged") && (
-      <VideoPlayer id={v._id} />
+      <video controls style={{ width: "100%", borderRadius: "8px", marginTop: "10px" }}>
+        <source src={`http://localhost:5000/api/videos/stream/${v._id}`} />
+      </video>
     )}
   </div>
 ))}
+
 
     </div>
   );

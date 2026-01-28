@@ -102,7 +102,8 @@ export default function Register() {
   };
 
   return (
-    <div className="auth-container">
+  <div style={{ display: "flex", justifyContent: "center", marginTop: "60px" }}>
+    <div className="card" style={{ width: "380px" }}>
       <h2>Register</h2>
 
       <input placeholder="Name" onChange={e => setForm({ ...form, name: e.target.value })} />
@@ -121,5 +122,7 @@ export default function Register() {
         Already have an account? Login
       </p>
     </div>
-  );
+  </div>
+);
+
 }

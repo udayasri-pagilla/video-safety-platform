@@ -35,14 +35,22 @@ export default function Login() {
   }
 };
 
-
-  return (
-    <div className="auth-container">
+return (
+  <div style={{ display: "flex", justifyContent: "center", marginTop: "80px" }}>
+    <div className="card" style={{ width: "360px" }}>
       <h2>Login</h2>
+
       <input placeholder="Email" onChange={e => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+
       <button onClick={handleLogin}>Login</button>
-      <p onClick={() => navigate("/register")}>Create account</p>
+
+      <p className="link" onClick={() => navigate("/register")}>
+        Create a new account
+      </p>
     </div>
-  );
+  </div>
+);
+
+ 
 }
