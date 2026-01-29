@@ -165,6 +165,19 @@ Refer to the diagram and documentation in the doc/ folder for a detailed system 
 
 ✔ Deployed and production-ready
 
+## Performance & Deployment Notes
+
+The deployed application is hosted on free-tier cloud services, which introduces certain expected limitations:
+
+- The backend service may experience cold-start delays, causing slightly slower responses after periods of inactivity.
+- Video processing and appearance on the dashboard may take a short time due to asynchronous processing and server wake-up latency.
+- Reloading the dashboard immediately after upload may occasionally show a temporary error if the backend is still initializing.
+- Re-authentication restores the session correctly once the backend is fully responsive.
+
+These behaviors are related to hosting constraints and not application logic.
+In a production-grade setup, persistent storage and always-on services would eliminate these delays.
+
+
 📌 Author
 Udayasri Pagilla
 Full-Stack Developer
