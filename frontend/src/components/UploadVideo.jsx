@@ -1,17 +1,4 @@
-// import React from "react";
-// import api from "../api/axios";
 
-// export default function UploadVideo() {
-//   const upload = async (e) => {
-//     const file = e.target.files[0];
-//     const form = new FormData();
-//     form.append("video", file);
-//     await api.post("/videos/upload", form);
-//     alert("Upload started");
-//   };
-
-//   return <input type="file" onChange={upload} />;
-// }
 import React, { useState } from "react";
 import api from "../api/axios";
 
@@ -44,4 +31,3 @@ export default function UploadVideo() {
     </div>
   );
 }
-
