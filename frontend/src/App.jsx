@@ -1,18 +1,4 @@
-// import React from "react";
-// import { AuthProvider } from "./context/AuthContext";
-// import Login from "./pages/Login";
-// import Register from "./pages/Register";
-// import Dashboard from "./pages/Dashboard";
 
-// export default function App() {
-//   return (
-//     <AuthProvider>
-//       <Register />
-//       <Login />
-//       <Dashboard />
-//     </AuthProvider>
-//   );
-// }
 
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";

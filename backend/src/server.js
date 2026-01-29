@@ -1,4 +1,4 @@
-import "dotenv/config";   // 🔥 THIS LINE IS CRITICAL
+import "dotenv/config";   //  THIS LINE IS CRITICAL
 import http from "http";
 import app from "./app.js";
 import { connectDB } from "./config/db.js";
