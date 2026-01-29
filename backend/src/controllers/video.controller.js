@@ -1,42 +1,4 @@
-// import fs from "fs";
-// import Video from "../models/Video.js";
-// import { processVideo } from "../services/videoProcessor.service.js";
 
-// export const uploadVideo = async (req, res) => {
-//   const video = await Video.create({
-//     owner: req.user.id,
-//     tenantId: req.user.tenantId,
-//     filename: req.file.originalname,
-//     path: req.file.path,
-//     status: "uploaded",
-//     progress: 0
-//   });
-
-//   processVideo(video._id);
-//   res.json(video);
-// };
-
-// export const listVideos = async (req, res) => {
-//   const videos = await Video.find({ tenantId: req.user.tenantId });
-//   res.json(videos);
-// };
-
-// export const streamVideo = async (req, res) => {
-//   const video = await Video.findById(req.params.id);
-//   const stat = fs.statSync(video.path);
-//   const range = req.headers.range;
-
-//   const start = Number(range.replace(/\D/g, ""));
-//   const end = Math.min(start + 1e6, stat.size - 1);
-
-//   res.writeHead(206, {
-//     "Content-Range": `bytes ${start}-${end}/${stat.size}`,
-//     "Content-Type": "video/mp4",
-//     "Accept-Ranges": "bytes"
-//   });
-
-//   fs.createReadStream(video.path, { start, end }).pipe(res);
-// };
 import fs from "fs";
 import Video from "../models/Video.js";
 import { processVideo } from "../services/videoProcessor.service.js";
@@ -66,10 +28,24 @@ export const uploadVideo = async (req, res) => {
  * List videos for tenant
  */
 export const listVideos = async (req, res) => {
-  const videos = await Video.find({ tenantId: req.user.tenantId });
-  res.json(videos);
-};
+  try {
+    const { status } = req.query;
 
+    const query = {
+      tenantId: req.user.tenantId,
+    };
+
+    // Optional filter by safety status
+    if (status) {
+      query.status = status;
+    }
+
+    const videos = await Video.find(query).sort({ createdAt: -1 });
+    res.json(videos);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch videos" });
+  }
+};
 /**
  * Public streaming endpoint (HTML video compatible)
  */
