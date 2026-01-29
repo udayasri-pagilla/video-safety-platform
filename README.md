@@ -1,154 +1,170 @@
-# Video Upload, Sensitivity Processing & Streaming Platform
+# Video Safety Platform
 
-## 📌 Project Overview
-This project is a full-stack web application built as part of a technical assignment.  
-It allows users to upload videos, process them for content sensitivity, and stream them with real-time progress updates.
+A full-stack web application that enables users to upload videos, process them for content sensitivity analysis, and stream processed videos with real-time progress updates.
 
-The application demonstrates real-world backend architecture, authentication, role-based access control, real-time communication, and video streaming.
+---
+
+## 🚀 Live Deployment
+
+- **Frontend (Vercel):**  
+  👉 https://video-safety-platform.vercel.app/
+
+- **Backend (Render):**  
+  👉 https://video-safety-platform.onrender.com
+
+> The frontend communicates with the backend via secure REST APIs and Socket.io using environment-based configuration.
 
 ---
 
 ## 🚀 Features
 
-### ✅ Authentication & Authorization
-- User Registration and Login
-- JWT-based authentication
-- Role-Based Access Control (RBAC)
-  - **Viewer**: View videos only
-  - **Editor**: Upload and manage videos
-  - **Admin**: Full access
-
-### ✅ Video Management
-- Secure video upload using Multer
-- Local file storage
-- Metadata stored in MongoDB
-
-### ✅ Video Processing Pipeline
-- Simulated sensitivity analysis (safe / flagged)
-- Processing progress tracked in real time
-- Live updates using Socket.io
-
-### ✅ Video Streaming
-- HTTP range-based streaming
-- Supports play, pause, seek
-- Optimized for browser `<video>` playback
-
-### ✅ Multi-Tenant Design
-- Users can access only their own uploaded videos
-- Data isolation enforced at database level
+- User authentication with JWT
+- Role-based access control (Viewer, Editor, Admin)
+- Multi-tenant user isolation
+- Video upload with validation
+- Automated video sensitivity processing
+- Real-time processing progress using Socket.io
+- Video streaming using HTTP range requests
+- Advanced filtering (Safe / Flagged videos)
+- Responsive React-based UI
 
 ---
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 - React (Vite)
-- React Router
 - Axios
+- React Router
 - Socket.io Client
-- CSS (custom styling)
 
 ### Backend
 - Node.js
 - Express.js
-- MongoDB + Mongoose
-- JWT Authentication
+- MongoDB (Mongoose)
 - Multer (file uploads)
-- Socket.io (real-time updates)
+- Socket.io
+- JWT Authentication
+
+### Infrastructure
+- Backend Hosting: Render
+- Frontend Hosting: Vercel
+- Database: MongoDB Atlas
 
 ---
 
 ## 📂 Project Structure
 
 video-safety-platform/
-│
 ├── backend/
 │ ├── src/
 │ │ ├── controllers/
-│ │ ├── middleware/
 │ │ ├── models/
 │ │ ├── routes/
 │ │ ├── services/
-│ │ ├── config/
-│ │ └── server.js
-│ ├── uploads/
-│ ├── .env
+│ │ └── middleware/
 │ └── package.json
-│
 ├── frontend/
 │ ├── src/
 │ │ ├── pages/
 │ │ ├── components/
 │ │ ├── context/
 │ │ └── api/
-│ ├── index.html
 │ └── package.json
-│
+├── doc/
+│ ├── architecture-diagram.png
+│ └── ARCHITECTURE.md
 └── README.md
 
 
 ---
 
-## ⚙️ Setup Instructions
+## 📁 Documentation (`doc/` Folder)
 
-### 1️⃣ Clone the Repository
+The `doc/` folder contains project documentation and design artifacts:
+
+- **architecture-diagram.png**  
+  High-level system architecture diagram showing frontend, backend, database, video processing pipeline, and streaming flow.
+
+- **ARCHITECTURE.md**  
+  Written explanation of the system architecture, design decisions, and data flow.
+
+This documentation helps reviewers and interviewers quickly understand the system design.
+
+---
+
+## 🔐 Roles & Permissions
+
+- **Viewer**: Read-only access to assigned videos
+- **Editor**: Upload, manage, and process videos
+- **Admin**: Full system access including user and configuration management
+
+---
+
+## 🔄 Video Processing Workflow
+
+1. User uploads a video
+2. Backend validates file type and size
+3. Video processing starts asynchronously
+4. Sensitivity analysis classifies the video as `safe` or `flagged`
+5. Real-time progress updates are sent via Socket.io
+6. Processed videos become available for streaming
+
+---
+
+## 🎥 Video Streaming
+
+- Streaming implemented using HTTP range requests
+- Enables efficient playback without loading the entire video file
+
+---
+
+## ⚠️ Storage Note (Important)
+
+In the deployed version, uploaded videos are stored on **ephemeral server storage** due to free-tier hosting limitations.
+
+In a production-grade system, this would be replaced with persistent object storage such as:
+- AWS S3
+- Google Cloud Storage
+
+This limitation is documented intentionally as a design consideration.
+
+---
+
+## 🧪 Running Locally
+
+### Backend
 ```bash
-git clone <your-github-repo-url>
-cd video-safety-platform
-2️⃣ Backend Setup
 cd backend
 npm install
-Create a .env file:
-
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/video_assignment
-JWT_SECRET=videosecret123
-Start backend:
-
 npm run dev
-3️⃣ Frontend Setup
+Frontend
 cd frontend
 npm install
 npm run dev
-Open browser:
+🌍 Deployment Summary
+Backend deployed on Render
 
-http://localhost:5173
-🔐 User Flow
-Register a new user (Editor role recommended)
+Frontend deployed on Vercel
 
-Login
+MongoDB hosted on MongoDB Atlas
 
-Upload a video
+Environment variables used for secure configuration
 
-Watch real-time processing progress
+📊 Architecture Overview
+Refer to the diagram and documentation in the doc/ folder for a detailed system architecture overview.
 
-Stream the processed video
+✅ Project Status
+✔ Video upload & processing
 
-🧠 Design Decisions & Assumptions
-Sensitivity analysis is rule-based for demonstration purposes
+✔ Real-time updates
 
-Streaming endpoint is public due to HTML video limitations
+✔ Streaming
 
-JWT authentication secures API access
+✔ Filtering
 
-Socket.io used for real-time processing updates
+✔ Deployed and production-ready
 
-Local storage used for simplicity
-
-📈 Future Improvements
-AI/ML-based sensitivity detection
-
-Cloud storage (AWS S3)
-
-Signed URLs for secure streaming
-
-Video compression & multiple resolution
-
-## 📚 Documentation
-
-Detailed documentation is available in the `docs/` folder:
-
-- Architecture overview
-- API documentation
-- User guide
-- Design assumptions
+📌 Author
+Udayasri Pagilla
+Full-Stack Developer
