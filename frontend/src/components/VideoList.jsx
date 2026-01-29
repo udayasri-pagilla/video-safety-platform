@@ -154,9 +154,10 @@ export default function VideoList({ filter }) {
               }}
             >
               <source
-                src={`http://localhost:5000/api/videos/stream/${v._id}`}
-                type="video/mp4"
-              />
+  src={`${import.meta.env.VITE_API_URL}/api/videos/stream/${v._id}`}
+  type="video/mp4"
+/>
+
             </video>
           )}
         </div>
